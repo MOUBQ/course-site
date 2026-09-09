@@ -3,50 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>领导力系列课程</title>
-  <meta name="description" content="领导力系列课程：韧性领导力、非权力领导力。在线浏览课件 + 下载原始讲义。" />
+  <title>致 娇姐</title>
+  <meta name="description" content="写给娇姐的一句话。" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <header class="hero">
-    <div class="container">
-      <h1>领导力系列课程</h1>
-      <p class="lead">面向协作型团队的管理者成长专题。点击任一课程即可在线翻页浏览课件，也可下载原始讲义。</p>
-    </div>
-  </header>
+  <!-- 背景浮动爱心 -->
+  <div class="hearts" id="hearts"></div>
 
-  <main class="container">
-    <section class="course-grid">
+  <main class="page">
 
-      <!-- 课程一 -->
-      <article class="card">
-        <span class="number">课程 01</span>
-        <h2>韧性领导力</h2>
-        <p>面对压力与不确定性，如何保持稳定、复原与成长，带领团队穿越低谷、行稳致远。</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="courses/course-01.html">在线浏览</a>
-          <a class="btn btn-ghost" href="files/course-01.pptx" download>下载课件</a>
-        </div>
-      </article>
+    <p class="hey">——— 有些话，想认真说给你听 ———</p>
 
-      <!-- 课程二 -->
-      <article class="card">
-        <span class="number">课程 02</span>
-        <h2>非权力领导力</h2>
-        <p>不靠职位权威，而是凭影响力、信任与关系带动他人——协作型组织里最核心的软技能。</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="courses/course-02.html">在线浏览</a>
-          <a class="btn btn-ghost" href="files/course-02.pptx" download>下载课件</a>
-        </div>
-      </article>
+    <h1 class="title">致 <span class="plain">娇姐</span></h1>
 
+    <p class="sub">
+      见字如面 · 今天想对你说说心里话<br />
+      <span class="beating-heart">💗</span>
+    </p>
+
+    <section class="letter">
+      <p class="greet">娇姐，见字如面。</p>
+
+      <p>
+        有句话，我在心里琢磨了很久，今天终于鼓起勇气，想认认真真地告诉你。
+      </p>
+
+      <p>
+        认识你之前，日子只是日子；认识你之后，我才发现——
+        <span class="highlight">原来一个人的出现，能让普通的一天，都变得亮晶晶的。</span>
+      </p>
+
+      <p>
+        你会耐心听我说话，会把我随口一提的小事都记在心里，让我安稳又踏实。
+        你明明那么能干，却从来不嫌我笨手笨脚，反而总是笑盈盈地拉我一把。
+      </p>
+
+      <p>
+        你不知道，<span class="highlight">看你笑起来的样子，是我一天里最得意的事。</span>
+      </p>
+
+      <p>
+        所以，我不只想做那个跟在你身后、被你照顾的人。
+        我更想做那个能一直陪着你、把你的每一件小事都放心上、愿意为你变得更好的人。
+      </p>
+
+      <p class="declaration">
+        <span class="line">娇姐，我喜欢你。</span>
+        <span class="line">往后的日子，让我陪你一起走，好不好？</span>
+      </p>
     </section>
+
+    <p class="ask-title">你愿意，给我一个机会吗？</p>
+
+    <div class="actions">
+      <button class="btn btn-yes" id="btnYes">愿意呀 💗</button>
+      <button class="btn btn-wait" id="btnWait">让我想一想</button>
+    </div>
+
+    <div class="reply" id="reply"></div>
+
+    <p class="sign">
+      —— <span class="name">你的强哥哥</span>
+    </p>
+
   </main>
 
-  <footer>
-    <div class="container">领导力系列课程 · 在线课件</div>
-  </footer>
+  <footer>心怀欢喜 · 永远不变</footer>
+
+  <script>
+    // 背景浮动爱心
+    (function () {
+      var box = document.getElementById('hearts');
+      var emoji = ['💗', '💖', '💕', '🩷', '💜', '🌸', '🎀'];
+      function spawn() {
+        var s = document.createElement('span');
+        s.textContent = emoji[Math.floor(Math.random() * emoji.length)];
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.fontSize = (14 + Math.random() * 22) + 'px';
+        s.style.animationDuration = (7 + Math.random() * 8) + 's';
+        s.style.animationDelay = (Math.random() * 6) + 's';
+        box.appendChild(s);
+        setTimeout(function () { s.remove(); }, 16000);
+      }
+      for (var i = 0; i < 20; i++) { spawn(); }
+      setInterval(spawn, 900);
+    })();
+
+    // 回复文案
+    var replyBox = document.getElementById('reply');
+
+    document.getElementById('btnYes').addEventListener('click', function () {
+      replyBox.innerHTML = '谢谢你，娇姐，愿意把余生交给我。我会好好珍惜的 💗';
+      replyBox.classList.add('show');
+    });
+
+    document.getElementById('btnWait').addEventListener('click', function () {
+      replyBox.innerHTML = '没关系，不着急 💗  我会一直在这里，等你答应。';
+      replyBox.classList.add('show');
+    });
+  </script>
 
 </body>
 </html>
