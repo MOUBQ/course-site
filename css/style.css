@@ -1,55 +1,64 @@
 /* ==========================================================================
-   致 娇姐 · 浪漫甜系表白页
-   粉色渐变 + 浮动爱心 + 一封情书
+   致 娇姐 · 深夜微光
+   一封信，写在深夜。深暖李子色夜空 + 一缕香金微光 + 一次点亮。
    ========================================================================== */
 
 :root {
-  --rose:      #f06292;   /* 主玫瑰粉 */
-  --rose-deep: #e91e63;   /* 深玫红 */
-  --rose-soft: #ffd1dc;   /* 浅粉 */
-  --cream:     #fff4f6;   /* 奶油粉 */
-  --ink:       #6b3a4a;   /* 正文暖棕 */
-  --ink-soft:  #a86a7c;   /* 次级文字 */
-  --paper:     #fffdfd;   /* 信纸 */
-  --line:      #ffd9e2;   /* 分隔/描边 */
-  --card:      rgba(255, 255, 255, .82);
-  --radius:    22px;
-  --shadow:    0 10px 40px -18px rgba(233, 30, 99, .35);
+  --night:     #1c1120;   /* 夜之底色（深暖李子色） */
+  --night-2:   #2a1826;   /* 高光处的暖紫 */
+  --night-3:   #120a14;   /* 边缘暗部 */
+  --gold:      #d9b06b;   /* 香金微光（主亮点） */
+  --gold-soft: #e8c98a;
+  --ink:       #f0e6df;   /* 暖白正文 */
+  --ink-soft:  #b9a6a4;   /* 次级文字 */
+  --blush:     #cd8fa4;   /* 浅玫瑰（点睛） */
+  --line:      rgba(232, 201, 138, .22);   /* 细分隔线 */
+  --maxw:      42rem;
 }
 
 * { box-sizing: border-box; }
 
+html, body { height: 100%; }
+
 body {
   margin: 0;
-  font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", "STSong", serif;
   color: var(--ink);
-  line-height: 1.9;
-  min-height: 100vh;
-  background: linear-gradient(165deg, #fff0f4 0%, #ffe2ec 45%, #ffd6e7 100%);
+  line-height: 2.05;
+  letter-spacing: .015em;
+  background:
+    radial-gradient(120% 90% at 50% 12%, var(--night-2) 0%, var(--night) 42%, var(--night-3) 100%);
+  background-attachment: fixed;
   overflow-x: hidden;
-  position: relative;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- 背景浮动爱心 ---------- */
+/* ---------- 夜空星光（克制：几粒轻轻一眨） ---------- */
 
-.hearts {
+.sky {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  overflow: hidden;
   z-index: 0;
 }
-.hearts span {
+.sky .star {
   position: absolute;
-  bottom: -40px;
-  user-select: none;
-  animation: floatUp linear infinite;
-  opacity: .55;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  opacity: .3;
+  animation: twinkle 6s ease-in-out infinite;
 }
-@keyframes floatUp {
-  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: .55; }
-  100% { transform: translateY(-110vh) rotate(28deg) scale(1.15); opacity: 0; }
+.sky .star.bright {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 8px 1px rgba(232, 201, 138, .55);
+  animation-duration: 9s;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: .18; transform: scale(1); }
+  50%      { opacity: .7;  transform: scale(1.25); }
 }
 
 /* ---------- 主容器 ---------- */
@@ -57,173 +66,227 @@ body {
 .page {
   position: relative;
   z-index: 1;
-  max-width: 680px;
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 56px 22px 72px;
+  padding: 16vh 24px 12vh;
+}
+
+/* ---------- 开头（始终可见） ---------- */
+
+.opening {
   text-align: center;
+  margin: 0 0 14vh;
 }
 
-/* ---------- 顶部 ---------- */
-
-.hey {
-  font-size: 15px;
-  letter-spacing: 2px;
-  color: var(--ink-soft);
-  margin: 0 0 10px;
-}
-
-.title {
-  font-size: 44px;
-  font-weight: 800;
-  color: var(--rose-deep);
-  margin: 0 0 6px;
-  text-shadow: 0 2px 0 rgba(255, 255, 255, .6);
-}
-.title .plain { font-weight: 700; }
-
-.sub {
-  font-size: 16px;
+.opening .greet {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: .12em;
   color: var(--ink);
-  margin: 0 0 26px;
+  margin: 0 0 14px;
 }
 
-.beating-heart {
-  font-size: 46px;
+.opening .lead {
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin: 0 0 34px;
+}
+
+.light-btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(232, 201, 138, .05);
+  color: var(--gold-soft);
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: .28em;
+  padding: 13px 30px 13px 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color .3s, background .3s, color .3s, transform .3s;
+}
+.light-btn:hover {
+  border-color: var(--gold);
+  background: rgba(232, 201, 138, .1);
+  color: var(--gold-soft);
+  transform: translateY(-1px);
+}
+.light-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.light-btn .dot {
   display: inline-block;
-  animation: beat 1.35s ease-in-out infinite;
-}
-@keyframes beat {
-  0%, 100% { transform: scale(1); }
-  15%      { transform: scale(1.22); }
-  30%      { transform: scale(1); }
-  55%      { transform: scale(1.16); }
-  70%      { transform: scale(1); }
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-right: 10px;
+  vertical-align: 2px;
+  box-shadow: 0 0 8px rgba(217, 176, 107, .8);
 }
 
-/* ---------- 情书卡片 ---------- */
+/* ---------- 被点亮的信 ---------- */
 
 .letter {
-  background: var(--card);
-  backdrop-filter: blur(2px);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 38px 34px;
-  margin: 26px auto 0;
-  text-align: left;
-  position: relative;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+  will-change: opacity, transform;
 }
-.letter::before {       /* 信纸上方的胶带 */
+.letter.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 一缕划开的金光（装饰线） */
+.letter .glow {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  margin: 0 0 44px;
+  overflow: hidden;
+}
+.letter .glow::after {
   content: "";
   position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-3deg);
-  width: 130px;
-  height: 26px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, .75), rgba(255, 220, 230, .9), rgba(255, 255, 255, .75));
-  border: 1px solid #ffeaf0;
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(233, 30, 99, .12);
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transform: scaleX(.6);
+  transition: opacity 1.2s ease, transform 1.6s ease;
+}
+.letter.open .glow::after {
+  opacity: .8;
+  transform: scaleX(1);
 }
 
-.letter p {
-  margin: 0 0 16px;
-  font-family: "Kaiti SC", "KaiTi", "STKaiti", "Noto Serif SC", serif;
-  font-size: 18px;
+.letter .body {
+  font-size: 17px;
   color: var(--ink);
+  max-width: 34rem;
 }
-.letter p:first-child { margin-top: 6px; }
+.letter .body p { margin: 0 0 1.5em; }
+.letter .body p:first-child { margin-top: 0; }
 
-.letter .greet { font-weight: 700; font-size: 19px; }
-
-.highlight { color: var(--rose-deep); font-weight: 700; }
-
-/* ---------- 核心表白 ---------- */
-
-.declaration {
-  font-family: "Kaiti SC", "KaiTi", "STKaiti", "Noto Serif SC", serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--rose-deep);
-  margin: 34px auto 8px;
+.letter .core {
+  text-align: center;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 27px;
+  line-height: 1.7;
+  color: var(--gold-soft);
+  margin: 3.2em auto 0;
+  max-width: 34rem;
 }
-.declaration .line { display: block; }
+.letter .core .ring,
+.letter .body .ring { color: var(--blush); }
 
-/* ---------- 互动提问 ---------- */
+/* ---------- 提问 + 回应 ---------- */
 
-.ask-title {
-  font-size: 19px;
-  color: var(--ink);
-  margin: 20px auto 18px;
-  font-weight: 600;
+.ask {
+  text-align: center;
+  margin: 4.4em auto 0;
+}
+.ask .q {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin: 0 0 26px;
+  letter-spacing: .05em;
 }
 
-.actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
 
 .btn {
-  font-size: 16px;
-  font-weight: 700;
-  padding: 13px 26px;
+  appearance: none;
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: .18em;
+  padding: 12px 28px;
   border-radius: 999px;
-  border: none;
   cursor: pointer;
-  transition: transform .15s, box-shadow .15s, background .2s;
+  transition: border-color .3s, background .3s, color .3s, transform .3s;
 }
-.btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
 .btn-yes {
-  background: linear-gradient(135deg, #f06292, #e91e63);
-  color: #fff;
-  box-shadow: 0 8px 20px -8px rgba(233, 30, 99, .6);
+  border: 1px solid rgba(217, 176, 107, .5);
+  background: rgba(217, 176, 107, .1);
+  color: var(--gold-soft);
 }
-.btn-yes:hover { box-shadow: 0 12px 26px -8px rgba(233, 30, 99, .7); }
+.btn-yes:hover { border-color: var(--gold); background: rgba(217, 176, 107, .18); transform: translateY(-1px); }
 
 .btn-wait {
-  background: #fff;
+  border: 1px solid var(--line);
+  background: transparent;
   color: var(--ink-soft);
-  border: 1.5px solid var(--line);
 }
-
-/* ---------- 回复 ---------- */
+.btn-wait:hover { border-color: var(--ink-soft); color: var(--ink); }
 
 .reply {
-  min-height: 60px;
-  margin-top: 26px;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--rose-deep);
+  min-height: 1.6em;
+  text-align: center;
+  font-size: 16px;
+  color: var(--blush);
+  margin-top: 30px;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .5s ease, transform .5s ease;
+  transform: translateY(6px);
+  transition: opacity .8s ease, transform .8s ease;
 }
 .reply.show { opacity: 1; transform: translateY(0); }
 
 /* ---------- 落款 ---------- */
 
-.sign {
-  margin-top: 40px;
+.signature {
+  margin: 5em 0 0;
   text-align: right;
-  font-family: "Kaiti SC", "KaiTi", "STKaiti", "Noto Serif SC", serif;
-  font-size: 18px;
-  color: var(--ink);
 }
-.sign .name { font-weight: 700; font-size: 20px; color: var(--rose-deep); }
-
-/* ---------- 页脚 ---------- */
+.signature .thin {
+  height: 1px;
+  width: 120px;
+  margin: 0 0 18px auto;
+  background: linear-gradient(90deg, transparent, var(--gold));
+  opacity: .55;
+}
+.signature .name {
+  font-family: "Ma Shan Zheng", "Kaiti SC", "KaiTi", serif;
+  font-size: 30px;
+  color: var(--ink);
+  letter-spacing: .12em;
+}
 
 footer {
   text-align: center;
   font-size: 13px;
   color: var(--ink-soft);
-  padding: 8px 0 30px;
-  letter-spacing: 1px;
+  letter-spacing: .2em;
+  margin-top: 9vh;
+  opacity: .85;
 }
 
+/* ---------- 移动端 ---------- */
+
 @media (max-width: 560px) {
-  .page { padding-top: 40px; }
-  .title { font-size: 34px; }
-  .letter { padding: 30px 22px; }
-  .declaration { font-size: 21px; }
+  .page { padding-top: 12vh; }
+  .opening .greet { font-size: 24px; }
+  .letter .core { font-size: 22px; }
+  .letter .body { font-size: 16px; }
+}
+
+/* ---------- 尊重系统减动效 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .sky .star { animation: none; }
+  .letter, .letter .glow::after, .reply {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .letter { opacity: 1; transform: none; }
+  .glow::after { opacity: .8; transform: scaleX(1); }
 }

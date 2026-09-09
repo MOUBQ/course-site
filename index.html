@@ -3,104 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>致 娇姐</title>
-  <meta name="description" content="写给娇姐的一句话。" />
+  <title>致 娇姐 · 写在深夜</title>
+  <meta name="description" content="写给娇姐的一封信，写在深夜。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- 背景浮动爱心 -->
-  <div class="hearts" id="hearts"></div>
+  <!-- 夜空里几粒轻眨的星 -->
+  <div class="sky" aria-hidden="true">
+    <span class="star" style="left:12%;top:18%;animation-delay:.4s"></span>
+    <span class="star" style="left:78%;top:12%;animation-delay:1.2s"></span>
+    <span class="star" style="left:30%;top:34%;animation-delay:2.1s"></span>
+    <span class="star bright" style="left:66%;top:28%;animation-delay:.9s"></span>
+    <span class="star" style="left:88%;top:44%;animation-delay:1.8s"></span>
+    <span class="star" style="left:20%;top:62%;animation-delay:2.6s"></span>
+  </div>
 
   <main class="page">
 
-    <p class="hey">——— 有些话，想认真说给你听 ———</p>
+    <!-- 开头：始终可见 -->
+    <header class="opening">
+      <h1 class="greet">娇姐，见字如面。</h1>
+      <p class="lead">有一些话，想在夜里，认真说给你听。</p>
+      <button class="light-btn" id="lightBtn" type="button">
+        <span class="dot"></span>点亮 · 读给你听
+      </button>
+    </header>
 
-    <h1 class="title">致 <span class="plain">娇姐</span></h1>
+    <!-- 被点亮的信 -->
+    <section class="letter" id="letter" aria-live="polite">
 
-    <p class="sub">
-      见字如面 · 今天想对你说说心里话<br />
-      <span class="beating-heart">💗</span>
-    </p>
+      <div class="glow" aria-hidden="true"></div>
 
-    <section class="letter">
-      <p class="greet">娇姐，见字如面。</p>
+      <div class="body">
+        <p>有些话，白天说不出口，只好借这夜的安静，认真写给你。</p>
+        <p>遇见你之前，日子只是日子；遇见你之后，才发觉，一个人能让寻常的一天也发光。</p>
+        <p>你会记住我随口一提的小事，会在我手忙脚乱时，笑着拉我一把。<span class="ring">看你笑起来的样子，是我整天的光。</span></p>
+        <p>所以，我不只想走进你的世界里，更想站在你身边，陪你把往后的每一个起落，都走稳。</p>
+      </div>
 
-      <p>
-        有句话，我在心里琢磨了很久，今天终于鼓起勇气，想认认真真地告诉你。
+      <p class="core">
+        娇姐，我喜欢你。<br />
+        往后的路，让我陪你走，好不好？
       </p>
 
-      <p>
-        认识你之前，日子只是日子；认识你之后，我才发现——
-        <span class="highlight">原来一个人的出现，能让普通的一天，都变得亮晶晶的。</span>
+      <div class="ask">
+        <p class="q">你愿意，给我这个机会吗？</p>
+        <div class="actions">
+          <button class="btn btn-yes" id="btnYes" type="button">愿意呀</button>
+          <button class="btn btn-wait" id="btnWait" type="button">再想想</button>
+        </div>
+        <p class="reply" id="reply"></p>
+      </div>
+
+      <p class="signature">
+        <span class="thin" aria-hidden="true"></span>
+        <span class="name">你的强哥哥</span>
       </p>
 
-      <p>
-        你会耐心听我说话，会把我随口一提的小事都记在心里，让我安稳又踏实。
-        你明明那么能干，却从来不嫌我笨手笨脚，反而总是笑盈盈地拉我一把。
-      </p>
-
-      <p>
-        你不知道，<span class="highlight">看你笑起来的样子，是我一天里最得意的事。</span>
-      </p>
-
-      <p>
-        所以，我不只想做那个跟在你身后、被你照顾的人。
-        我更想做那个能一直陪着你、把你的每一件小事都放心上、愿意为你变得更好的人。
-      </p>
-
-      <p class="declaration">
-        <span class="line">娇姐，我喜欢你。</span>
-        <span class="line">往后的日子，让我陪你一起走，好不好？</span>
-      </p>
     </section>
-
-    <p class="ask-title">你愿意，给我一个机会吗？</p>
-
-    <div class="actions">
-      <button class="btn btn-yes" id="btnYes">愿意呀 💗</button>
-      <button class="btn btn-wait" id="btnWait">让我想一想</button>
-    </div>
-
-    <div class="reply" id="reply"></div>
-
-    <p class="sign">
-      —— <span class="name">你的强哥哥</span>
-    </p>
 
   </main>
 
-  <footer>心怀欢喜 · 永远不变</footer>
+  <footer>写于深夜 · 心里装着你</footer>
 
   <script>
-    // 背景浮动爱心
-    (function () {
-      var box = document.getElementById('hearts');
-      var emoji = ['💗', '💖', '💕', '🩷', '💜', '🌸', '🎀'];
-      function spawn() {
-        var s = document.createElement('span');
-        s.textContent = emoji[Math.floor(Math.random() * emoji.length)];
-        s.style.left = Math.random() * 100 + 'vw';
-        s.style.fontSize = (14 + Math.random() * 22) + 'px';
-        s.style.animationDuration = (7 + Math.random() * 8) + 's';
-        s.style.animationDelay = (Math.random() * 6) + 's';
-        box.appendChild(s);
-        setTimeout(function () { s.remove(); }, 16000);
-      }
-      for (var i = 0; i < 20; i++) { spawn(); }
-      setInterval(spawn, 900);
-    })();
+    var letter = document.getElementById('letter');
 
-    // 回复文案
+    // 一共只点亮一次
+    document.getElementById('lightBtn').addEventListener('click', function () {
+      this.classList.add('open');
+      letter.classList.add('open');
+      var self = this;
+      setTimeout(function () { self.style.display = 'none'; }, 1200);
+      letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
     var replyBox = document.getElementById('reply');
 
     document.getElementById('btnYes').addEventListener('click', function () {
-      replyBox.innerHTML = '谢谢你，娇姐，愿意把余生交给我。我会好好珍惜的 💗';
+      replyBox.textContent = '谢谢你，娇姐。这句话，我是认真的。';
       replyBox.classList.add('show');
     });
 
     document.getElementById('btnWait').addEventListener('click', function () {
-      replyBox.innerHTML = '没关系，不着急 💗  我会一直在这里，等你答应。';
+      replyBox.textContent = '好。不着急，我把这封信，留在这里等你。';
       replyBox.classList.add('show');
     });
   </script>
