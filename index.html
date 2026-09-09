@@ -48,18 +48,8 @@
       </div>
 
       <p class="core">
-        娇姐，我喜欢你。<br />
-        往后的路，让我陪你走，好不好？
+        娇姐，我喜欢你。
       </p>
-
-      <div class="ask">
-        <p class="q">你愿意，给我这个机会吗？</p>
-        <div class="actions">
-          <button class="btn btn-yes" id="btnYes" type="button">愿意呀</button>
-          <button class="btn btn-wait" id="btnWait" type="button">再想想</button>
-        </div>
-        <p class="reply" id="reply"></p>
-      </div>
 
       <p class="signature">
         <span class="thin" aria-hidden="true"></span>
@@ -84,17 +74,6 @@
       letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    var replyBox = document.getElementById('reply');
-
-    document.getElementById('btnYes').addEventListener('click', function () {
-      replyBox.textContent = '谢谢你，娇姐。这句话，我是认真的。';
-      replyBox.classList.add('show');
-    });
-
-    document.getElementById('btnWait').addEventListener('click', function () {
-      replyBox.textContent = '好。不着急，我把这封信，留在这里等你。';
-      replyBox.classList.add('show');
-    });
   </script>
 
 </body>
